@@ -1,0 +1,16 @@
+<APIProxy revision="1" name="Amarello-cuentas-v1">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1691680021892</CreatedAt>
+    <LastModifiedAt>1691680365862</LastModifiedAt>
+    <BasePaths>/amarello/cuentas/v1</BasePaths>
+    <Policies>
+        <Policy>XMLtoJSON</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

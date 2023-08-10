@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <DefaultFaultRule name="fault-rule">
+        <Step>
+            <Condition>(raisefault.RF-ErrorGenerico.failed = true)</Condition>
+            <Name>AM-RespuestaDefault</Name>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>OA-Verifica-Acces-Token</Name>
+            </Step>
+            <Step>
+                <Name>AM-Limpiar-Header-Autorizacion</Name>
+            </Step>
+            <Step>
+                <Condition>(oauthV2.OA-Verifica-Acces-Token.failed = true)</Condition>
+                <Name>AM-Error-Autentificacion</Name>
+            </Step>
+            <Step>
+                <Condition>(flow.error.code != null)</Condition>
+                <Name>RF-ErrorGenerico</Name>
+            </Step>
+            <Step>
+                <Name>RC-Recursos-BE</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="GET usuarios">
+            <Condition>(proxy.pathsuffix MatchesPath "/usuarios") and (request.verb = "GET")</Condition>
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>AM-Mensaje-Respuesta</Name>
+                </Step>
+            </Response>
+        </Flow>
+        <Flow name="PUT usuarios">
+            <Condition>(proxy.pathsuffix MatchesPath "/usuarios") and (request.verb = "PUT")</Condition>
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>AM-Mensaje-Respuesta-Dos</Name>
+                </Step>
+            </Response>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/amarello/ventas/v1</BasePath>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+    <!--RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule-->
+</ProxyEndpoint>

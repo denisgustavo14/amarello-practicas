@@ -1,0 +1,19 @@
+<APIProxy revision="5" name="Amarello-usuarios-v1">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1691683842280</CreatedAt>
+    <LastModifiedAt>1691683842280</LastModifiedAt>
+    <BasePaths>/amarello/usuarios/v1</BasePaths>
+    <Policies>
+        <Policy>JC-Variable</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://JavaScript-1.js</Resource>
+    </Resources>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

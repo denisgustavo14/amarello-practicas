@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Mensaje-Respuesta">
+    <DisplayName>AM-Mensaje-Respuesta</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload>
+            {
+              "mensaje": "Operación éxitosa.",
+              "folio": "82dr-4f73-2edf-1ajp",
+              "resultado": {
+                 "nombreCompleto": "Denis Garcia Mendez",
+                 "edad": 34,
+                "fechaNacimiento": "20-04-1987"
+              }
+            }
+    </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

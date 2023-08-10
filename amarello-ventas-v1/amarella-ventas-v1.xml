@@ -1,0 +1,23 @@
+<APIProxy revision="6" name="amarella-ventas-v1">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1691679353257</CreatedAt>
+    <LastModifiedAt>1691679353257</LastModifiedAt>
+    <BasePaths>/amarello/ventas/v1</BasePaths>
+    <Policies>
+        <Policy>AM-Mensaje-Respuesta</Policy>
+        <Policy>AM-Mensaje-Respuesta-Dos</Policy>
+        <Policy>AM-RespuestaDefault</Policy>
+        <Policy>OA-Verifica-Acces-Token</Policy>
+        <Policy>AM-Limpiar-Header-Autorizacion</Policy>
+        <Policy>AM-Error-Autentificacion</Policy>
+        <Policy>RF-ErrorGenerico</Policy>
+        <Policy>RC-Recursos-BE</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

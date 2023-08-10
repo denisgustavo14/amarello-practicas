@@ -1,0 +1,15 @@
+<APIProxy revision="2" name="api-seguridad-oauth2">
+    <DisplayName></DisplayName>
+    <Description></Description>
+    <CreatedAt>1691642537594</CreatedAt>
+    <LastModifiedAt>1691642537594</LastModifiedAt>
+    <BasePaths>/api/seguridad/oauth2</BasePaths>
+    <Policies>
+        <Policy>BA-Extraer-Consumer-Key</Policy>
+        <Policy>VK-Verficar-Consumer-Key</Policy>
+        <Policy>OA-Generar-Token</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+</APIProxy>

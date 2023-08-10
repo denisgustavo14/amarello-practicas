@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-Mensaje-Respuesta-Dos">
+    <DisplayName>AM-Mensaje-Respuesta-Dos</DisplayName>
+    <Properties/>
+    <Set>
+        <Payload>
+            {
+              "mensaje": "Actualizado.",
+              "folio": "202k-4f173-2edf-1a820",
+              "resultado": {
+                 "nombreCompleto": "Denis Gustavo Garcia Mendez",
+                 "edad": 35,
+                "fechaNacimiento": "20-04-1988"
+              }
+            }
+    </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

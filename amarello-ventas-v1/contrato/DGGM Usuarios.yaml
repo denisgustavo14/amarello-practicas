@@ -1,0 +1,360 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: DGGM Usuarios Amarello México
+  description: |-
+    API de consulta de usuario
+
+host: dev-api.amarello.com.mx:8080
+
+basePath: /amarello/ventas/v1
+
+schemes:
+  - https
+
+produces:
+  - application/json
+
+securityDefinitions:
+  Bearer:
+    description: >
+      Para acceder a la API se debe pasar un token válido en todas las consultas.
+      La siguiente sintaxis se debe utilizar en el encabezado 'Authorization' :
+        Bearer: 2zzLJmBAtTNIU8nF8e8XbmDvaNGs
+    type: apiKey
+    name: Authorization
+    in: header
+
+security:
+  - Bearer: []
+
+paths:
+  /usuarios:
+    get:
+      summary: Endpoint de creacion de de usuario.
+      description: Creacion de usuario.
+      tags:
+        - Creación usuarios
+      consumes:
+        - application/json
+      produces:
+        - application/json
+
+      responses:
+        200:
+          description: Ok.
+          schema:
+            $ref: "#/definitions/200"
+          examples:
+            application/json: |-
+              {
+                 "mensaje": "Operación éxitosa.",
+                 "folio": "82dr-4f73-2edf-1ajp",
+                 "resultado": {
+                   "nombreCompleto": "Denis Garcia Mendez",
+                   "edad": 34,
+                   "fechaNacimiento": "20-04-1987"
+                 }
+               }
+        400:
+          description: Solicitud incorrecta
+          schema:
+            $ref: "#/definitions/400"
+          examples:
+            application/json: |-
+              {
+                "codigo": "400.amarello-ventas.100",
+                "mensaje": "Parámetros no validos, por favor valide su información.",
+                "folio": "apigeedev03-9218-545190-4",
+                "info": "https://amarello-mexico.com.mx/info#400.amarello-ventas.100",
+                "detalles": [
+                  "Parametros no validos, favor de validar"
+                  ]
+              }
+
+
+        404:
+          description: Recurso no encontrado.
+          schema:
+            $ref: "#/definitions/404"
+          examples:
+            application/json: |-
+              {
+                "codigo": "404.amarello-ventas.101",
+                "mensaje": "Recurso no encontrado.",
+                "folio": "apigeedev03-9218-545190-5",
+                "info": "https://amarello-mexico.com.mx/info#404.amarello-ventas.101",
+                "detalles": [
+                  "Informacion no encontrada"
+                ]
+              }
+        500:
+          description: Error interno del servidor
+          schema:
+            $ref: "#/definitions/500"
+          examples:
+            application/json: |-
+              {
+                "codigo": "500.amarello-ventas.102",
+                "mensaje":"Error interno del servidor.",
+                "folio":"apigeedev03-9218-545190-6",
+                "info": "https://amarello-mexico.com.mx/info#500.amarello-ventas.102",
+                "detalles": [
+                  "Error interno del servidor"
+                ]
+              }
+
+      security:
+        - Bearer: []
+  
+
+    put:
+      summary: Endpoint de actualizacion de datos personales de usuario.
+      description: actualizacion de datos personales de usuario.
+      tags:
+        - Actulizacion usuarios
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - name: Body
+          in: body
+          description: "Objeto que describe los datos de entrada al recurso de actualizacion de usuarios"
+          required: true
+          schema:
+            $ref: "#/definitions/entradaUsuariosPut"
+
+      responses:
+        200:
+          description: Ok.
+          schema:
+            $ref: "#/definitions/200"
+          examples:
+            application/json: |-
+              {
+                 "mensaje": "Operación éxitosa.",
+                 "folio": "82dr-4f73-2edf-1ajp",
+                 "resultado": {
+                   "nombreCompleto": "Denis Gustavo Garcia Mendez",
+                   "edad": 35,
+                   "fechaNacimiento": "20-04-1988"
+                 }
+               }
+        400:
+          description: Solicitud incorrecta
+          schema:
+            $ref: "#/definitions/400"
+          examples:
+            application/json: |-
+              {
+                "codigo": "400.amarello-ventas.100",
+                "mensaje": "Parámetros no validos, por favor valide su información.",
+                "folio": "apigeedev03-9218-545190-4",
+                "info": "https://amarello-mexico.com.mx/info#400.amarello-ventas.100",
+                "detalles": [
+                  "Parametros no validos, favor de validar"
+                  ]
+              }
+        
+
+        404:
+          description: Recurso no encontrado.
+          schema:
+            $ref: "#/definitions/404"
+          examples:
+            application/json: |-
+              {
+                "codigo": "404.amarello-ventas.101",
+                "mensaje": "Recurso no encontrado.",
+                "folio": "apigeedev03-9218-545190-5",
+                "info": "https://amarello-mexico.com.mx/info#404.amarello-ventas.101",
+                "detalles": [
+                  "Informacion no encontrada"
+                ]
+              }
+        500:
+          description: Error interno del servidor
+          schema:
+            $ref: "#/definitions/500"
+          examples:
+            application/json: |-
+              {
+                "codigo": "500.amarello-ventas.102",
+                "mensaje":"Error interno del servidor.",
+                "folio":"apigeedev03-9218-545190-6",
+                "info": "https://amarello-mexico.com.mx/info#500.amarello-ventas.102",
+                "detalles": [
+                  "Error interno del servidor"
+                ]
+              }
+
+      security:
+        - Bearer: []
+
+
+definitions:
+  entradaUsuarios:
+    type: object
+    required:
+      - fechaCalculo
+      - credito
+    properties:
+      nombreCompleto:
+        type: string
+        example: "Denis Garcia Mendez"
+        description: "nombre completo del usuario"
+      edad:
+        type: integer
+        example: 34
+        description: "edad del usuario"
+      fechaNacimiento:
+        type: string
+        example: "20-04-1987"
+
+  entradaUsuariosPut:
+    type: object
+    required:
+      - fechaCalculo
+      - credito
+    properties:
+      nombreCompleto:
+        type: string
+        example: "Denis Gustavo Garcia Mendez"
+        description: "nombre completo del usuario"
+      edad:
+        type: integer
+        example: 35
+        description: "edad del usuario"
+      fechaNacimiento:
+        type: string
+        example: "20-04-1988"
+
+  200:
+    type: object
+    properties:
+      mensaje:
+        type: string
+        description: "Descripción de la operación"
+        example: "Operación exitosa."
+      folio:
+        type: string
+        description: "Folio de la operación"
+        example: "82dr-4f73-2edf-1ajp"
+      resultado:
+        type: object
+        properties:
+          nombreCompleto:
+            type: string
+            description: |
+              Nombre completo del usuario
+            example: "Denis Gustavo Garcia Mendez"
+          edad:
+            type: integer
+            description: |
+              edad del usuario
+            example: "35"
+          fechaNacimiento:
+            type: string
+            description: |
+              fecha de nacimiento del usuario
+            example: "20-04-1988"
+
+  400:
+    type: object
+    properties:
+      codigo:
+        type: string
+        description: Código indentificador del error
+        example: "400.amarello-ventas.100"
+      mensaje:
+        type: string
+        description: Descripción del mensaje de la operacion
+        example: "Campos no validos, favor de validar"
+      folio:
+        description: "Folio generado al realizar petición."
+        type: string
+        example: "apigeedev03-9218-545190-4"
+      info:
+        type: string
+        description: Rutas de ayuda para atender el error
+        example: "https://amarello-mexico.com.mx/info#400.amarello-ventas.100"
+      detalles:
+        type: array
+        items:
+          type: string
+          example: "Parametros no validos, favor de validar"
+
+
+  404:
+    type: object
+    properties:
+      codigo:
+        description: "Código del error."
+        type: string
+        example: "404.amarello-ventas.101"
+      mensaje:
+        description: "Descripción del error."
+        type: string
+        example: "Recurso no encontrado."
+      folio:
+        description: "Folio generado al realizar petición."
+        type: string
+        example: "apigeedev03-9218-545190-5"
+      info:
+        description: "Rutas de ayuda para atender el error."
+        type: string
+        example: "https://amarello-mexico.com.mx/info#404.amarello-ventas.101"
+      detalles:
+        description: "Descripción detallada del error."
+        type: array
+        items:
+          type: string
+          example: "No se pudo encontrar el contenido solicitado."
+
+  500:
+    type: object
+    properties:
+      codigo:
+        type: string
+        description: Código indentificador del error
+        example: "500.amarello-ventas.102"
+      mensaje:
+        type: string
+        description: Descripción del mensaje de la operacion
+        example: "Error interno del servidor"
+      folio:
+        description: "Folio generado al realizar petición."
+        type: string
+        example: "apigeedev03-9218-545190-5"
+      info:
+        type: string
+        description: Rutas de ayuda para atender el error
+        example: "https://amarello-mexico.com.mx/info#500.amarello-ventas.102"
+      detalles:
+        type: array
+        items:
+          type: string
+          example: "Error interno del servidor"
+
+  summary:
+    type: object
+    properties:
+      api-name:
+        type: string
+        description: API para las creacion y actualizacion de usuario.
+        example: "DGGM Amarello Mexico v1"
+
+      usuarios-get:
+        type: object
+        properties:
+          displayName:
+            type: string
+            description: "Creacion de usuario."
+            example: "Creacion de usuario."
+      usuarios-put:
+        type: object
+        properties:
+          displayName:
+            type: string
+            description: "Actualizacion de datos personales de usuario."
+            example: "Actualizacion de datos personales de usuario."
